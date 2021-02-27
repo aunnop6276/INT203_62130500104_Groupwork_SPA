@@ -21,62 +21,30 @@
 </head>
 
 <body>
-  <div id="app">
-    <!--ส่วน Title-->
-    <div class="pb-6 ml-6 text-3xl font-semibold">Photo Gallery ({{tasks.length}})</div>
-    <!--ส่วนปุ่ม-->
-    <div class="flex ml-6 pb-3">
-      <div v-if="check" class="space-x-4">
 
-        <input @keyup.enter='searchPressenter' class="text border" v-model="inputTask" placeholder="Enter keyword ..."
-          class="p-2 bg-white rounded flex-1 border-b-2 border-blue-300">
-        <button @click="popup" class="bg-blue-500 text-white py-1 px-6 rounded">Cancel</button>
+  <div id="app" class="space-y-4">
 
-      </div>
-      <i @click="popup" class="material-icons" v-if="!check">
-        search
-      </i>
-    </div>
-    <!--ส่วนขยายรูป-->
-    <div v-show="bigpic">
-      <div v-for="(task2,index) in selectpic" class="px-1.5 flex space-x-4 justify-center items-center bg-black">
-
-        <div class="relative">
-          <div class="absolute top-1 right-1  ">
-            <i class="material-icons text-5xl text-black animate-pulse" v-on:click="closebp">
-              cancel
-            </i>
-          </div>
-          <img :src="task2.image" class="w-96" v-if="!task2.done" />
-          <img :src="task2.imagelike" class="w-96" v-if="task2.done" />
-        </div>
-      </div>
-    </div>
-    <!--ส่วนแสดงรูป-->
-
-    <div v-for="(task,index) in tasks" class="flex ml-6 pb-6" v-show="switchtrue">
-      <img :src="task.image" @click="zoomuppic(index)" v-on:click="toggleDone(index)" class="h-64 mt-6" />
-      <div class="mt-6 pl-6">{{task.Title}}</div>
-      <i class="material-icons text-red-400 pl-3 mt-6" v-show="task.done">
-        favorite
-      </i>
-    </div>
-      <div v-for="(task,index) in lulic" class="px-1.5" v-if="switchfalse">
-        <img :src="task.image" @click="zoomuppic(index)" v-on:click="toggleDoneNemo(index)" class="h-64 mt-6" />
-        <div class="mt-6 pl-6">{{task.Title}}</div>
-        <i class="material-icons text-red-400 pl-3 mt-6" v-show="task.done">
-          favorite
-        </i>
-      </div>
-<div v-if="notfind">
-      'No photo'
-    </div>
-    </div>
     
-  </div>
+    <div class="text-center font-mono text-4xl medium py-8">Photo Gallery ({{count}})</div>
+    <pic-search :check="check"  @search-Pressenter="searchPressenter" @pop-up="popup"></pic-search> 
+    
+     <pic-view :selectpic="selectpic" :bigpic="bigpic" @chevron-right="chevron_right" @closebp="closebp"
+      @chevron-left="chevron_left"></pic-view>
 
+    <pic-list :taskx="tasks" @toggle-done="toggleDone" @zoomup-pic="zoomuppic"  @zoomup-nemopic="zoomupnemopic" @toggleDone-Nemo
+      :switchtrue="switchtrue" :switchfalse="switchfalse" :notfind="notfind" :findingnemo="findingnemo"></pic-list>
+
+  </div>
   <!-- my main.js -->
+
   <script src="./main.js"></script>
+  <script src="./components/PhotoView.js"></script>
+  <script src="./components/PhotoSearch.js"></script>
+  <script src="./components/PhotoItem.js"></script>
+  
+  <script>
+    const mountedApp = app.mount('#app')
+  </script>
 </body>
 
 </html>
