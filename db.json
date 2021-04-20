@@ -1,0 +1,44 @@
+{
+  "icecreams": [
+    {
+      "name": "Dark Chocolate Cup",
+      "description": "Dark Chocolate icecream with cherry for topping",
+      "id": 1
+    },
+    {
+      "name": "Vanilla Sundae",
+      "description": "Vanilla icecream with milkchocolate toppings",
+      "edit": false,
+      "show": false,
+      "id": 2
+    },
+    {
+      "name": "Strawberry Fondue",
+      "description": "a scoop of milk icecream with a cup of strawberry yam",
+      "edit": false,
+      "show": false,
+      "id": 3
+    },
+    {
+      "name": "Matcha Sorbet",
+      "description": "Matcha favoured sorbet",
+      "edit": false,
+      "show": false,
+      "id": 4
+    },
+    {
+      "name": "Blue Creamy",
+      "description": "Blueberry favoured icecream with chocolate sauce",
+      "edit": false,
+      "show": false,
+      "id": 5
+    }
+  ],
+  "favList": [
+    {
+      "name": "Blue Creamy",
+      "description": "Blueberry favoured icecream with chocolate sauce",
+      "id": 1
+    }
+  ]
+}
